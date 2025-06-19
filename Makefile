@@ -1,4 +1,4 @@
-# SB Back Creator Makefile
+# SB Backup Creator Makefile
 
 APP_NAME = sb-backup-creator
 BUILD_FLAGS = -ldflags "-H windowsgui -s -w"

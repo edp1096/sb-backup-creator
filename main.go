@@ -27,7 +27,7 @@ func main() {
 func onReady() {
 	// 트레이 아이콘 설정
 	systray.SetIcon(icon.Data)
-	systray.SetTitle("SB Back Creator")
+	systray.SetTitle("SB Backup Creator")
 	systray.SetTooltip("Stellar Blade Save Backup Tool")
 
 	// 설정 초기화
@@ -50,7 +50,7 @@ func onReady() {
 	// mConfigFile := systray.AddMenuItem("설정 파일 편집", "settings.json 파일 직접 편집")
 	mConfigFile := systray.AddMenuItem("설정 편집", "settings.json 파일 직접 편집")
 	systray.AddSeparator()
-	mAbout := systray.AddMenuItem("정보", "프로그램 정보")
+	// mAbout := systray.AddMenuItem("정보", "프로그램 정보")
 	mExit := systray.AddMenuItem("종료", "프로그램 종료")
 
 	// 메뉴 이벤트 처리
@@ -65,8 +65,8 @@ func onReady() {
 			// 	showSettingsDialog()
 			case <-mConfigFile.ClickedCh:
 				openConfigFile()
-			case <-mAbout.ClickedCh:
-				showAboutDialog()
+			// case <-mAbout.ClickedCh:
+			// 	showAboutDialog()
 			case <-mExit.ClickedCh:
 				systray.Quit()
 				return

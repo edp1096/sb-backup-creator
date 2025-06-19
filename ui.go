@@ -81,7 +81,7 @@ func openConfigFile() {
 }
 
 func showAboutDialog() {
-	dialog.Message(`SB Back Creator v1.0
+	dialog.Message(`SB Backup Creator v0.0.3
 
 Stellar Blade 세이브 파일 자동 백업 도구
 

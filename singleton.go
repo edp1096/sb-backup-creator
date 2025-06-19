@@ -67,8 +67,8 @@ func showAlreadyRunningMessage() {
 	user32 := windows.NewLazySystemDLL("user32.dll")
 	procMessageBox := user32.NewProc("MessageBoxW")
 
-	title, _ := windows.UTF16PtrFromString("SB Back Creator")
-	message, _ := windows.UTF16PtrFromString("이미 실행 중인 SB Back Creator가 있습니다.\n시스템 트레이를 확인해주세요.")
+	title, _ := windows.UTF16PtrFromString("SB Backup Creator")
+	message, _ := windows.UTF16PtrFromString("이미 실행 중인 SB Backup Creator가 있습니다.\n시스템 트레이를 확인해주세요.")
 
 	procMessageBox.Call(
 		0, // hWnd

@@ -1,0 +1,7 @@
+{
+    "target_file": "%localappdata%\\SB\\Saved\\SaveGames\\your_steam_id\\StellarBladeSave00.sav",
+    "backup_dir": "%localappdata%\\SB\\Backups",
+    "hotkey_combo": "ctrl+shift+alt+f9",
+    "auto_backup": true,
+    "max_backups": 50
+}

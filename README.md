@@ -15,7 +15,7 @@ Stellar Blade 세이브 파일 백업 도구
 ## 사용법
 
 ### 첫 실행
-1. `sb-back-creator.exe` 실행
+1. `sb-backup-creator.exe` 실행
 2. 시스템 트레이에 아이콘이 나타남
 3. 첫 실행 시 자동으로 설정 파일 생성
 4. Steam ID가 자동으로 감지되어 경로 설정

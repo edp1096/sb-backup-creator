@@ -1,6 +1,6 @@
 # SB Back Creator Makefile
 
-APP_NAME = sb-back-creator
+APP_NAME = sb-backup-creator
 BUILD_FLAGS = -ldflags "-H windowsgui -s -w"
 
 .PHONY: build clean run tidy

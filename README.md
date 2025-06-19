@@ -87,14 +87,7 @@ Stellar Blade 세이브 파일 백업 도구
 2. `settings.json`에서 다른 조합으로 변경
 3. 프로그램 재시작
 
-
-## 설치 및 빌드
-
-### 필요 조건
-- Go 1.21 이상
-- Windows 10/11 (cross-platform 지원하지만 주로 Windows 환경에서 테스트됨)
-
-### 소스 빌드
+## 소스 빌드
 
 * Golang 1.24 이상 필요
 ```

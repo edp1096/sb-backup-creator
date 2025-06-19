@@ -40,7 +40,7 @@ Stellar Blade 세이브 파일 백업 도구
 {
   "target_file": "C:\\Users\\USERNAME\\AppData\\Local\\SB\\Saved\\SaveGames\\STEAM_ID\\StellarBladeSave00.sav",
   "backup_dir": "C:\\Users\\USERNAME\\AppData\\Local\\SB\\Backups",
-  "hotkey_combo": "ctrl+shift+f9",
+  "hotkey_combo": "ctrl+shift+alt+f9",
   "auto_backup": true,
   "max_backups": 50
 }

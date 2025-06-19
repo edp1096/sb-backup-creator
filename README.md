@@ -1,4 +1,4 @@
-# SB Back Creator
+# SB save file backup tool
 
 Stellar Blade 세이브 파일 백업 도구
 

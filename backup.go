@@ -23,18 +23,54 @@ func performAutoBackup() {
 	}
 
 	backupDir := GetConfig().BackupDir
-	backupFileName := "StellarBladeSave00_auto.sav"
-	backupPath := filepath.Join(backupDir, backupFileName)
+	autoBackup0 := filepath.Join(backupDir, "StellarBladeSave00_auto_0.sav")
+	autoBackup1 := filepath.Join(backupDir, "StellarBladeSave00_auto_1.sav")
 
-	if err := copyFile(sourceFile, backupPath); err != nil {
+	// 자동 백업 파일 순환 관리
+	if err := rotateAutoBackups(autoBackup0, autoBackup1); err != nil {
+		log.Printf("자동 백업 순환 실패: %v", err)
+		return
+	}
+
+	// 새로운 백업을 _auto_0으로 생성
+	if err := copyFile(sourceFile, autoBackup0); err != nil {
 		log.Printf("자동 백업 실패: %v", err)
 		return
 	}
 
-	log.Printf("자동 백업 완료: %s", backupPath)
+	log.Printf("자동 백업 완료: %s", autoBackup0)
 
-	// 오래된 백업 파일 정리
-	cleanupOldBackups()
+	// 자동 백업은 cleanupOldBackups 호출하지 않음 (항상 2개만 유지)
+}
+
+// rotateAutoBackups 자동 백업 파일 순환 관리
+func rotateAutoBackups(autoBackup0, autoBackup1 string) error {
+	// auto_0과 auto_1 파일 존재 확인
+	_, err0 := os.Stat(autoBackup0)
+	_, err1 := os.Stat(autoBackup1)
+
+	exists0 := err0 == nil
+	exists1 := err1 == nil
+
+	if exists0 && exists1 {
+		// 둘 다 있을 때: auto_1 삭제, auto_0을 auto_1로 이동
+		if err := os.Remove(autoBackup1); err != nil {
+			return fmt.Errorf("기존 auto_1 삭제 실패: %v", err)
+		}
+		if err := os.Rename(autoBackup0, autoBackup1); err != nil {
+			return fmt.Errorf("auto_0을 auto_1로 이동 실패: %v", err)
+		}
+		log.Printf("자동 백업 순환: auto_0 → auto_1")
+	} else if exists0 && !exists1 {
+		// auto_0만 있을 때: auto_0을 auto_1로 이동
+		if err := os.Rename(autoBackup0, autoBackup1); err != nil {
+			return fmt.Errorf("auto_0을 auto_1로 이동 실패: %v", err)
+		}
+		log.Printf("자동 백업 순환: auto_0 → auto_1")
+	}
+	// exists1만 있거나 둘 다 없는 경우는 그대로 진행 (새로운 auto_0 생성)
+
+	return nil
 }
 
 func performManualBackup() {
@@ -99,10 +135,13 @@ func cleanupOldBackups() {
 		return
 	}
 
-	// 백업 파일만 필터링
+	// 백업 파일만 필터링 (자동 백업 파일 제외)
 	var backupFiles []os.DirEntry
 	for _, entry := range entries {
-		if !entry.IsDir() && strings.HasPrefix(entry.Name(), "StellarBladeSave00_") && strings.HasSuffix(entry.Name(), ".sav") {
+		if !entry.IsDir() &&
+			strings.HasPrefix(entry.Name(), "StellarBladeSave00_") &&
+			strings.HasSuffix(entry.Name(), ".sav") &&
+			!strings.Contains(entry.Name(), "_auto_") { // 자동 백업 파일 제외
 			backupFiles = append(backupFiles, entry)
 		}
 	}

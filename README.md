@@ -60,7 +60,11 @@ Stellar Blade 세이브 파일 백업 도구
 
 ## 백업 파일 형식
 
-- **자동 백업**: `StellarBladeSave00_auto.sav` (덮어쓰기, 1개만 유지)
+- **자동 백업**:
+  - StellarBladeSave00_auto_0.sav (가장 최근)
+  - StellarBladeSave00_auto_1.sav (이전)
+  - 항상 최대 2개만 유지 (순환)
+  - max_backups 설정과 무관하게 동작
 - **수동 백업**: `StellarBladeSave00_20240619_143022.sav` (누적)
 - **단축키 백업**: `StellarBladeSave00_20240619_143022.sav` (누적, 수동 백업과 동일)
 
@@ -98,6 +102,7 @@ make
 ## 주의사항
 
 - 바이러스 백신이 오탐지할 수 있습니다
+- 정상적인 세이브 파일의 크기는은 약 16MB이며, 16MB 미만의 잘못된 파일이 생성될 수 있습니다
 - 이 프로그램은 Stellar Blade 게임과 관련이 없습니다
 - 백업은 정기적으로 확인하시기 바랍니다
 - 중요한 세이브 파일은 추가로 수동 백업을 권장합니다

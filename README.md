@@ -29,7 +29,7 @@ Stellar Blade 세이브 파일 백업 도구
 - **종료**: 프로그램 종료
 
 ### 단축키
-기본 단축키: `Ctrl + Shift + F9`
+기본 단축키: `Ctrl + Shift + Alt + F9`
 - 언제든지 이 단축키를 눌러 날짜 형식 백업 실행
 - `settings.json`에서 단축키 변경 가능
 
@@ -40,7 +40,7 @@ Stellar Blade 세이브 파일 백업 도구
 {
   "target_file": "C:\\Users\\USERNAME\\AppData\\Local\\SB\\Saved\\SaveGames\\STEAM_ID\\StellarBladeSave00.sav",
   "backup_dir": "C:\\Users\\USERNAME\\AppData\\Local\\SB\\Backups",
-  "hotkey_combo": "ctrl+shift+f9",
+  "hotkey_combo": "ctrl+shift+alt+f9",
   "auto_backup": true,
   "max_backups": 50
 }
